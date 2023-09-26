@@ -9,21 +9,27 @@ def main():
     bg_img = pg.image.load("ex01/fig/pg_bg.jpg")
     tmr = 0
     
+    
     tori_img = pg.image.load("ex01/fig/3.png")
     tori_img = pg.transform.flip(tori_img,True,False)
     tori_img2 = pg.transform.rotozoom(tori_img,-10,1.0)
     tori_imgs = [tori_img,tori_img2]
     
+    
+    
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
             
-        screen.blit(bg_img, [0, 0])
+        x = tmr%1600
+        
+        screen.blit(bg_img, [-x, 0])
+        screen.blit(bg_img, [1600-x, 0])
         screen.blit(tori_imgs[tmr%2], [300,200])
         
         pg.display.update()
         tmr += 1        
-        clock.tick(10)
+        clock.tick(100)
 
 
 if __name__ == "__main__":
